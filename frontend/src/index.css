@@ -1,0 +1,270 @@
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: #010828;
+  color: #EFF4FF;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+
+
+.fancy-input {
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  padding: 16px 18px;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(12px);
+}
+
+.fancy-input:focus {
+  border-color: rgba(155,225,93,0.5);
+  box-shadow: 0 0 0 4px rgba(155,225,93,0.08);
+}
+
+.fancy-input option {
+  background: #18230f;
+  color: white;
+}
+
+/* ── Liquid Glass ─────────────────────────────── */
+.liquid-glass {
+  background: rgba(255,255,255,0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0) 40%,
+    rgba(255,255,255,0) 60%,
+    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.45) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #010828; }
+::-webkit-scrollbar-thumb { background: rgba(111,255,0,0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(111,255,0,0.6); }
+
+/* ── Animations ───────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes pulse-neon {
+  0%,100% { box-shadow: 0 0 8px rgba(111,255,0,0.4); }
+  50%     { box-shadow: 0 0 24px rgba(111,255,0,0.9); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-up  { animation: fadeUp 0.6s ease forwards; }
+.neon-pulse       { animation: pulse-neon 2s ease-in-out infinite; }
+.spin-slow        { animation: spin-slow 3s linear infinite; }
+
+/* ── Input focus ring ────────────────────────── */
+.ks-input {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  color: #EFF4FF;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ks-input::placeholder { color: rgba(239,244,255,0.25); }
+.ks-input:focus { border-color: rgba(111,255,0,0.5); }
+
+/* ── Primary button ──────────────────────────── */
+.ks-btn {
+  width: 100%;
+  background: #6FFF00;
+  color: #010828;
+  font-family: Anton, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.ks-btn:hover   { opacity: 0.88; }
+.ks-btn:disabled{ opacity: 0.35; cursor: not-allowed; }
+
+/* ── Ghost button ────────────────────────────── */
+.ks-btn-ghost {
+  width: 100%;
+  background: transparent;
+  color: #EFF4FF;
+  font-family: Anton, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.ks-btn-ghost:hover { background: rgba(255,255,255,0.06); border-color: rgba(111,255,0,0.3); }
+
+/* ── Card ────────────────────────────────────── */
+.ks-card {
+  border-radius: 24px;
+  padding: 24px;
+}
+
+/* ── Badge ───────────────────────────────────── */
+.ks-badge {
+  display: inline-block;
+  font-family: Anton, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+/* ── Tab bar ─────────────────────────────────── */
+.ks-tab {
+  flex: 1;
+  padding: 14px 6px;
+  text-align: center;
+  font-family: Anton, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(239,244,255,0.45);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.ks-tab:hover  { color: #EFF4FF; }
+.ks-tab.active { color: #6FFF00; border-bottom-color: #6FFF00; }
+
+/* ── Select dropdown ────────────────────────── */
+.ks-select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-family: ui-monospace, monospace;
+  font-size: 13px;
+  color: #EFF4FF;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236FFF00' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+.ks-select option { background: #010828; color: #EFF4FF; }
+.ks-select:focus { border-color: rgba(111,255,0,0.5); }
+
+/* ── Toast ───────────────────────────────────── */
+.ks-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-family: Anton, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #010828;
+  background: #6FFF00;
+  box-shadow: 0 4px 24px rgba(111,255,0,0.35);
+  animation: fadeUp 0.35s ease;
+}
+.ks-toast.error {
+  background: #ff4d4d;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(255,77,77,0.35);
+}
+
+/* ── Result boxes (fertilizer, analysis, tips) ─ */
+.result-box {
+  border-radius: 20px;
+  padding: 20px 24px;
+  margin-top: 16px;
+}
+.result-box-green  { border-left: 4px solid #6FFF00; background: rgba(111,255,0,0.05); }
+.result-box-orange { border-left: 4px solid #ff9800; background: rgba(255,152,0,0.05); }
+.result-box-blue   { border-left: 4px solid #2196f3; background: rgba(33,150,243,0.05); }
+
+.result-title {
+  font-family: Anton, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Weather card ────────────────────────────── */
+.weather-hero {
+  border-radius: 20px;
+  background: rgba(33,150,243,0.08);
+  border: 1px solid rgba(33,150,243,0.2);
+  padding: 32px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ── Market price card ───────────────────────── */
+.market-card {
+  border-radius: 20px;
+  background: rgba(111,255,0,0.04);
+  border: 1px solid rgba(111,255,0,0.12);
+  padding: 20px 24px;
+  margin-top: 16px;
+}
