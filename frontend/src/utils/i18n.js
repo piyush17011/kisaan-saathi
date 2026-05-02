@@ -17,9 +17,20 @@ export const translations = {
     // AskTab - Questions
     "Which crop are you growing?": "Which crop are you growing?",
     "What issue are you facing?": "What issue are you facing?",
+    "What is your soil type? (loamy, sandy, clay, etc.)": "What is your soil type? (loamy, sandy, clay, etc.)",
+    "Soil pH level? (4.0-9.0)": "Soil pH level? (4.0-9.0)",
+    "Soil Nitrogen (N) in ppm?": "Soil Nitrogen (N) in ppm?",
+    "Soil Phosphorus (P) in ppm?": "Soil Phosphorus (P) in ppm?",
+    "Soil Potassium (K) in ppm?": "Soil Potassium (K) in ppm?",
     "Water availability?": "Water availability?",
     "What is your budget range?": "What is your budget range?",
     "Describe your farm problem briefly": "Describe your farm problem briefly",
+
+    // AskTab - Hints
+    "If unsure, common soil types: loamy (fertile), sandy (drains well), clay (holds water), silt (fine particles)": "If unsure, common soil types: loamy (fertile), sandy (drains well), clay (holds water), silt (fine particles)",
+    "pH 6.0-7.0 is ideal for most crops. If unknown, leave blank or click \"Skip\"": "pH 6.0-7.0 is ideal for most crops. If unknown, leave blank or click \"Skip\"",
+    "Typical range: 5-50 ppm. If unknown, leave blank or click \"Skip\"": "Typical range: 5-50 ppm. If unknown, leave blank or click \"Skip\"",
+    "Or specify in liters/day or mm/week. Low: <5L/day, Moderate: 5-20L/day, High: >20L/day": "Or specify in liters/day or mm/week. Low: <5L/day, Moderate: 5-20L/day, High: >20L/day",
 
     // AskTab - Options
     "Wheat": "Wheat",
@@ -36,6 +47,12 @@ export const translations = {
     "Moderate": "Moderate",
     "High": "High",
     "Medium": "Medium",
+    "Loamy": "Loamy",
+    "Sandy": "Sandy",
+    "Clay": "Clay",
+    "Silt": "Silt",
+    "Not sure": "Not sure",
+    "Skip": "Skip",
 
     // AskTab - Actions
     "Type your answer...": "Type your answer...",
@@ -101,9 +118,20 @@ export const translations = {
     // AskTab - Questions
     "Which crop are you growing?": "🌾 आप कौन सी फसल उगा रहे हैं?",
     "What issue are you facing?": "🍂 आप किस समस्या का सामना कर रहे हैं?",
+    "What is your soil type? (loamy, sandy, clay, etc.)": "🌱 आपकी मिट्टी का प्रकार क्या है? (दोमट, रेतीली, चिकनी, आदि)",
+    "Soil pH level? (4.0-9.0)": "🧪 मिट्टी का पीएच स्तर? (4.0-9.0)",
+    "Soil Nitrogen (N) in ppm?": "🟢 मिट्टी में नाइट्रोजन (N) पीपीएम में?",
+    "Soil Phosphorus (P) in ppm?": "🟡 मिट्टी में फास्फोरस (P) पीपीएम में?",
+    "Soil Potassium (K) in ppm?": "🟠 मिट्टी में पोटैशियम (K) पीपीएम में?",
     "Water availability?": "💧 पानी की उपलब्धता कैसी है?",
     "What is your budget range?": "💰 आपका बजट कितना है?",
     "Describe your farm problem briefly": "📝 अपनी कृषि समस्या का संक्षेप में वर्णन करें",
+
+    // AskTab - Hints
+    "If unsure, common soil types: loamy (fertile), sandy (drains well), clay (holds water), silt (fine particles)": "अगर अनिश्चित हैं, तो सामान्य मिट्टी के प्रकार: दोमट (उर्वर), रेतीली (अच्छी जल निकासी), चिकनी (पानी रोकती), सिल्ट (बारीक कण)",
+    "pH 6.0-7.0 is ideal for most crops. If unknown, leave blank or click \"Skip\"": "अधिकांश फसलों के लिए pH 6.0-7.0 आदर्श है। अगर अज्ञात है, तो खाली छोड़ दें या \"छोड़ें\" पर क्लिक करें",
+    "Typical range: 5-50 ppm. If unknown, leave blank or click \"Skip\"": "सामान्य रेंज: 5-50 पीपीएम। अगर अज्ञात है, तो खाली छोड़ दें या \"छोड़ें\" पर क्लिक करें",
+    "Or specify in liters/day or mm/week. Low: <5L/day, Moderate: 5-20L/day, High: >20L/day": "या लीटर/दिन या मिमी/सप्ताह में निर्दिष्ट करें। कम: <5L/दिन, मध्यम: 5-20L/दिन, उच्च: >20L/दिन",
 
     // AskTab - Options
     "Wheat": "गेहूं",
@@ -120,6 +148,12 @@ export const translations = {
     "Moderate": "मध्यम",
     "High": "अधिक",
     "Medium": "मध्यम",
+    "Loamy": "दोमट",
+    "Sandy": "रेतीली",
+    "Clay": "चिकनी",
+    "Silt": "सिल्ट",
+    "Not sure": "पता नहीं",
+    "Skip": "छोड़ें",
 
     // AskTab - Actions
     "Type your answer...": "अपना उत्तर लिखें...",
@@ -185,9 +219,20 @@ export const translations = {
     // AskTab - Questions
     "Which crop are you growing?": "🌾 आपण कोणते पीक घेत आहात?",
     "What issue are you facing?": "🍂 आपण कोणत्या समस्येला सामोरे जात आहात?",
+    "What is your soil type? (loamy, sandy, clay, etc.)": "🌱 तुमच्या मातीचा प्रकार काय आहे? (दुमट, वाळू, चिकण, इ.)",
+    "Soil pH level? (4.0-9.0)": "🧪 मातीचा pH स्तर? (4.0-9.0)",
+    "Soil Nitrogen (N) in ppm?": "🟢 मातीत नायट्रोजन (N) ppm मध्ये?",
+    "Soil Phosphorus (P) in ppm?": "🟡 मातीत फॉस्फरस (P) ppm मध्ये?",
+    "Soil Potassium (K) in ppm?": "🟠 मातीत पोटॅशियम (K) ppm मध्ये?",
     "Water availability?": "💧 पाण्याची उपलब्धता कशी आहे?",
     "What is your budget range?": "💰 तुमचा बजेट किती आहे?",
     "Describe your farm problem briefly": "📝 तुमच्या शेती समस्येचे थोडक्यात वर्णन करा",
+
+    // AskTab - Hints
+    "If unsure, common soil types: loamy (fertile), sandy (drains well), clay (holds water), silt (fine particles)": "अनिश्चित असल्यास, सामान्य मातीचे प्रकार: दुमट (उर्वर), वाळू (चांगली पाणी वाहते), चिकण (पाणी साठवते), सिल्ट (बारीक कण)",
+    "pH 6.0-7.0 is ideal for most crops. If unknown, leave blank or click \"Skip\"": "बहुतांश पिकांसाठी pH 6.0-7.0 आदर्श आहे. अज्ञात असल्यास, रिकामे सोडा किंवा \"वगळा\" वर क्लिक करा",
+    "Typical range: 5-50 ppm. If unknown, leave blank or click \"Skip\"": "सामान्य श्रेणी: 5-50 ppm. अज्ञात असल्यास, रिकामे सोडा किंवा \"वगळा\" वर क्लिक करा",
+    "Or specify in liters/day or mm/week. Low: <5L/day, Moderate: 5-20L/day, High: >20L/day": "किंवा लिटर/दिवस किंवा मिमी/आठवड्यात निर्दिष्ट करा. कमी: <5L/दिवस, मध्यम: 5-20L/दिवस, जास्त: >20L/दिवस",
 
     // AskTab - Options
     "Wheat": "गहू",
@@ -204,6 +249,12 @@ export const translations = {
     "Moderate": "मध्यम",
     "High": "जास्त",
     "Medium": "मध्यम",
+    "Loamy": "दुमट",
+    "Sandy": "वाळू",
+    "Clay": "चिकण",
+    "Silt": "सिल्ट",
+    "Not sure": "माहीत नाही",
+    "Skip": "वगळा",
 
     // AskTab - Actions
     "Type your answer...": "तुमचे उत्तर लिहा...",

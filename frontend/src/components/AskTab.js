@@ -27,9 +27,40 @@ const stepsTemplate = (language) => [
     ]
   },
   {
+    key: 'soil_type',
+    question: '🌱 ' + t('What is your soil type? (loamy, sandy, clay, etc.)', language),
+    hint: t('If unsure, common soil types: loamy (fertile), sandy (drains well), clay (holds water), silt (fine particles)', language),
+    options: [t('Loamy', language), t('Sandy', language), t('Clay', language), t('Silt', language), t('Not sure', language)]
+  },
+  {
+    key: 'ph',
+    question: '🧪 ' + t('Soil pH level? (4.0-9.0)', language),
+    hint: t('pH 6.0-7.0 is ideal for most crops. If unknown, leave blank or click "Skip"', language),
+    options: [t('Skip', language)]
+  },
+  {
+    key: 'nitrogen_ppm',
+    question: '🟢 ' + t('Soil Nitrogen (N) in ppm?', language),
+    hint: t('Typical range: 5-50 ppm. If unknown, leave blank or click "Skip"', language),
+    options: [t('Skip', language)]
+  },
+  {
+    key: 'phosphorus_ppm',
+    question: '🟡 ' + t('Soil Phosphorus (P) in ppm?', language),
+    hint: t('Typical range: 5-30 ppm. If unknown, leave blank or click "Skip"', language),
+    options: [t('Skip', language)]
+  },
+  {
+    key: 'potassium_ppm',
+    question: '🟠 ' + t('Soil Potassium (K) in ppm?', language),
+    hint: t('Typical range: 50-200 ppm. If unknown, leave blank or click "Skip"', language),
+    options: [t('Skip', language)]
+  },
+  {
     key: 'water',
     question: '💧 ' + t('Water availability?', language),
-    options: [t('Low', language), t('Moderate', language), t('High', language)]
+    options: [t('Low', language), t('Moderate', language), t('High', language)],
+    hint: t('Or specify in liters/day or mm/week. Low: <5L/day, Moderate: 5-20L/day, High: >20L/day', language)
   },
   {
     key: 'budget',
@@ -269,12 +300,18 @@ export default function AskTab({ farmerId, weatherContext }) {
   }
 
   const sendMessage = async (value) => {
-    if (!value.trim()) return
+    // Allow empty values for optional fields
     const currentStep = steps[step]
-    setMessages(prev => [...prev, { type: 'user', text: value }])
-    let normalisedValue = value
-    if (currentStep.key === 'water') normalisedValue = normalise(value, WATER_NORMALISE)
-    if (currentStep.key === 'budget') normalisedValue = normalise(value, BUDGET_NORMALISE)
+    const isOptionalField = ['ph', 'nitrogen_ppm', 'phosphorus_ppm', 'potassium_ppm'].includes(currentStep.key)
+    
+    if (!isOptionalField && !value.trim()) return
+    
+    const processedValue = value.trim() || (isOptionalField ? 'Not specified' : value)
+    
+    setMessages(prev => [...prev, { type: 'user', text: processedValue }])
+    let normalisedValue = processedValue
+    if (currentStep.key === 'water') normalisedValue = normalise(processedValue, WATER_NORMALISE)
+    if (currentStep.key === 'budget') normalisedValue = normalise(processedValue, BUDGET_NORMALISE)
     const updatedData = { ...formData, [currentStep.key]: normalisedValue }
     setFormData(updatedData)
     setInput('')
@@ -296,11 +333,11 @@ export default function AskTab({ farmerId, weatherContext }) {
             water_availability: updatedData.water,
             budget_range: updatedData.budget,
             location,
-            soil_type: 'Loamy',
-            ph: 6.5,
-            nitrogen_ppm: 10,
-            phosphorus_ppm: 10,
-            potassium_ppm: 10,
+            soil_type: updatedData.soil_type || 'Not specified',
+            ph: updatedData.ph || 'Not specified',
+            nitrogen_ppm: updatedData.nitrogen_ppm || 'Not specified',
+            phosphorus_ppm: updatedData.phosphorus_ppm || 'Not specified',
+            potassium_ppm: updatedData.potassium_ppm || 'Not specified',
             language,
             // ── pass weather context to backend ──
             weather_context: weatherContext || null,
@@ -311,8 +348,12 @@ export default function AskTab({ farmerId, weatherContext }) {
             ...prev,
             { type: 'bot', text: '✅ ' + t('AI recommendations generated successfully.', language) }
           ])
-        } catch {
-          setToast({ message: t('Failed to generate AI response.', language), type: 'error' })
+        } catch (err) {
+          const errorMessage =
+            err.response?.data?.detail ||
+            err.response?.data?.message ||
+            t('Failed to generate AI response.', language)
+          setToast({ message: errorMessage, type: 'error' })
         } finally {
           setLoading(false)
         }
@@ -365,7 +406,12 @@ export default function AskTab({ farmerId, weatherContext }) {
                 ? 'bg-[#9be15d] text-[#18230f]'
                 : 'border border-white/10 bg-[#18210f] text-white'
             }`}>
-              {msg.text}
+              <div>{msg.text}</div>
+              {msg.type === 'bot' && steps[step] && steps[step].hint && (
+                <div className="mt-2 text-xs text-white/60 italic border-t border-white/10 pt-2">
+                  💡 {steps[step].hint}
+                </div>
+              )}
             </div>
           </div>
         ))}
