@@ -1,7 +1,7 @@
 # Kisaan Saathi — AI Farming Assistant
 
 AI-powered smart farming assistant for Indian farmers.
-Built with React CRA (Orbis.NFT dark space theme) + Python FastAPI + MongoDB.
+Built with React CRA (Orbis.NFT dark space theme) + Python Flask + MongoDB.
 
 ```
 kisaan-saathi/
